@@ -1,46 +1,29 @@
 import pandas as pd
+import numpy as np
 
-agricultura = pd.read_csv('Test1/dataIN/Agricultura.csv')
-pop_localitati = pd.read_csv('Test1/dataIN/PopulatieLocalitati.csv')
+def cerinta1(agricultura:pd.DataFrame):
+    x = agricultura.apply(lambda x: x['PlantePermanente':].sum(), axis = 1)
+    x.name = 'Total'
+    cer1 = pd.DataFrame(agricultura.iloc[:, 0])
+    sol = cer1.merge(x, left_index=True, right_index=True)
+    sol.to_csv('Test1/dataOUT/cerinta1.csv')
 
-# print(agricultura.shape[0])
-# columns = agricultura.columns[0:2].to_list() + ['Total']
-# results = []
-# for i in range(agricultura.shape[0]):
-#    total = agricultura.iloc[i, 2:].sum()
-#    results.append(list(agricultura.iloc[i,0:2]) + [total])
+def cerinta2(agricultura:pd.DataFrame):
+    x = agricultura.apply(lambda x: x['PlantePermanente':].idxmax(), axis=1)
+    x.name = 'Activitate'
+    cer2 = pd.DataFrame(agricultura.iloc[:,0]).merge(x, left_index=True, right_index=True)
+    cer2.to_csv('Test1/dataOUT/cerinta2.csv')
 
-# cerinta1 = pd.DataFrame(results, columns=columns)
-# cerinta1.to_csv('Test1/dataOUT/cerinta1.csv', index=False)
-
-# columns = agricultura.columns[0:2].to_list() + ['Activitate']
-# results = []
-# for i in range(agricultura.shape[0]):
-#     max = agricultura.iloc[i,2:].max()
-#     nume_coloana = agricultura.iloc[i][agricultura.iloc[i] == max].index[0]
-    
-#     results.append(list(agricultura.iloc[i,0:2]) + [nume_coloana])
-
-# cerinta2 = pd.DataFrame(results, columns=columns)
-# cerinta2.to_csv('Test1/dataOUT/cerinta2.csv',index=False)
-
-columns3 = [pop_localitati.columns[2]] + agricultura.columns[2:].to_list()
-result3 = []
-for i in range(agricultura.shape[0]):
-    siruta = agricultura.iloc[i,0]
-
-df3 = pd.DataFrame(result3, columns=columns3)
-df3.to_csv('Test1/dataOUT/cer3.csv', index=False)
-
-    
-
-    
-
-   
-
-       
+def cerinta3(agricultura:pd.DataFrame, pop:pd.DataFrame):
+    x = agricultura.merge(pop[['Judet','Populatie']], left_index=True, right_index=True)
+    summedCols = x.columns[1:-2].to_list()
+    groupedSumm = pd.DataFrame(x.groupby(by="Judet", as_index="Judet")[summedCols].sum())
+    aux = pd.DataFrame(data=pop.iloc[:,1:]).groupby(by="Judet").sum()
+    cer3 = groupedSumm.merge(aux, left_index=True, right_index=True).apply(lambda x: np.round(x/x['Populatie'],2), axis=1)
+    pd.DataFrame(cer3.iloc[:,0:-1]).to_csv('Test1/dataOUT/cerinta3.csv')
 
 
 
-
-
+agricultura = pd.read_csv('Test1/dataIN/Agricultura.csv', index_col=0)
+pop_localitati = pd.read_csv('Test1/dataIN/PopulatieLocalitati.csv', index_col=0)
+cerinta3(agricultura, pop_localitati)

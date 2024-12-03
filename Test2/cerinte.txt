@@ -1,0 +1,62 @@
+The topics are solved in the Python programming language
+The Python code will be written in a single file with the extension .py
+Each correctly solved requirement is evaluated with 1 point
+1 point is offered by default
+1. Create a numpy.ndarray of (7, 7) with the following configuration, using the initialization methods from the numpy package. The result will be printed to the console.
+[[33. 7. 7. 7. 7. 7. 7.]
+[ 7. 33. 0. 0 .0. 0. 7.]
+[7. 0. 33. 0. 0. 0. 7.]
+[7. 0. 0. 77. 0. 0. 7.]
+[7. 0. 0. 0. 33. 0. 7.]
+[7. 0. 0. 0. 0. 33. 7.]
+[7. 7. 7. 7. 7. 7. 33.]]
+2. Initialize the numpy.ndarray array
+[[nan nan nan nan nan nan nan]
+
+[nan nan nan nan nan nan nan]
+
+[nan nan nan nan nan nan nan]
+
+[nan nan nan nan nan nan nan]
+
+[nan nan nan nan nan nan nan]
+
+[nan nan nan nan nan nan nan]
+
+[nan nan nan nan nan nan nan]]
+
+Starting from the above matrix, obtain and print the following matrix to the console, using methods from the numpy package:
+[[5. 5. 5. 5. 5. 5. 5.]
+[5. 0. 0. 0. 0. 0. 5.]
+[5. 0. 0. 0. 0. 0. 5.]
+[5. 0. 0. 0. 0. 0. 5.]
+[5. 0. 0. 0. 0. 0. 5.] 
+[5. 0. 0. 0. 0. 0. 5.]
+[5. 5. 5. 5. 5. 5. 5.]]
+3. To obtain from the following numpy.ndarray array
+[[5. 5. 5. 5. 5. 5. 5.]
+[5. 0. 0. 0. 0. 0. 5.] 
+[5. 0. 0. 0. 0. 0. 5.] 
+[5. 0. 0. 0. 0. 0. 5.] 
+[5. 0. 0. 0. 0. 0. 5.] 
+[5. 0. 0. 0. 0. 0. 5.]
+[5. 5. 5. 5. 5. 5. 5.]]
+a sub-matrix containing the cells that have the value 0 (zero).
+
+4. Generate a vector of 100 random floating-point values in the range [0, 10). 
+Create a pandas.Series based on this vector and label its rows as 'L_1', 'L_2', ... Print the series to the console.
+
+5. Create a two-dimensional numpy.ndarray (11, 5) of random floating-point values in [0, 10). 
+Obtain a pandas.DataFrame from this array with row labels of the form 'L1', 'L2', ... and column labels of the form 'C1', 'C2', ... Print the DataFrame to the console.
+
+6. Create a dictionary of students with keys of the form 'S_1', ..., 'S_8'. 
+The dictionary values are lists of 7 random grades from 1 to 10. Create a pandas.DataFrame from the dictionary and print it to the console.
+
+7. Create a pandas.DataFrame from a Python dictionary whose keys are students of the form 'Studl', ... 'Stud7' and whose values are pandas.
+Series of 5 random grades from 1 to 10, for the winter semester exams, labelled 'Ex1', ..., 'Ex5'. Print the resulting pandas.DataFrame to the console.
+
+8. Read the files Series_1.csv and Series_2.csv and bring the data into two pandas.Series. 
+Create a Python dictionary with the keys 'Coll' and 'Col2' and having as values the two Series with the data taken from the files. Create a pandas.DataFrame from the previously created dictionary and print its content to the console.
+
+9. Create a dictionary where the keys are years of study of the form 'Anl', ..., 'An5' and the values are dictionaries with keys of the form 'Studl', 'Stud8' and the values are 5 random grades from 1 to 10 for the exams in the winter session. 
+Create a pandas.DataFrame from this dictionary of dictionaries and print its contents to the console.
